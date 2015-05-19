@@ -11,18 +11,33 @@ namespace MyWeek
     {
         static void Main(string[] args)
         {
+            new DataWriter().WriteAll();
+        }
+
+    }
+
+    class DataWriter
+    {
+        public void WriteAll()
+        {
             var da = new DatabaseAccess();
 
             // DBにアクセスして、従業員番号60の人の名前を取得する。
-            Console.WriteLine(da.GetEmployeeNameBy("60"));
+            Write(da.GetEmployeeNameBy("60"));
 
             // DBにアクセスして、従業員番号70の人の名前を取得する。
-            Console.WriteLine(da.GetEmployeeNameBy("70"));
+            Write(da.GetEmployeeNameBy("70"));
 
             // DBにアクセスして、従業員番号80の人の名前を取得する。
-            Console.WriteLine(da.GetEmployeeNameBy("80"));
+            Write(da.GetEmployeeNameBy("80"));
+        }
+
+        public void Write(string name)
+        {
+            Console.WriteLine(name);
         }
     }
+
 
     class DatabaseAccess
     {
