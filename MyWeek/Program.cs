@@ -11,32 +11,17 @@ namespace MyWeek
     {
         static void Main(string[] args)
         {
-            var connect = "User Id=hr; password=hr;" + "Data Source=localhost:1521/orcl; Pooling=false;";
+            var da = new DatabaseAccess();
 
-            using (var con = new OracleConnection())
-            {
-                con.ConnectionString = connect;
-                con.Open();
-
-                var cmd = con.CreateCommand();
-                cmd.CommandText = "select first_name from employees where department_id = 60";
-
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader.GetString(0));
-                }
-            }
-
-            Console.WriteLine("DONE!");
-
+            // DBにアクセスして、従業員番号60の人の名前を取得する。
+            var name = da.GetEmployeeNameByEmployeesIdIs60();
         }
     }
 
     class DatabaseAccess
     {
 
-        public string GetEmployeesFirstNameByDepartmentIdIs60()
+        public string GetEmployeeNameByEmployeesIdIs60()
         {
             var connect = "User Id=hr; password=hr;" + "Data Source=localhost:1521/orcl; Pooling=false;";
 
@@ -46,7 +31,7 @@ namespace MyWeek
                 con.Open();
 
                 var cmd = con.CreateCommand();
-                cmd.CommandText = "select first_name from Employees where department_id = 60";
+                cmd.CommandText = "select name from Employees where employees_id = 60";
 
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
