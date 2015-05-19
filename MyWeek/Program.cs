@@ -22,14 +22,11 @@ namespace MyWeek
         {
             var da = new DatabaseAccess();
 
-            // DBにアクセスして、従業員番号60の人の名前を取得する。
-            Write(da.GetEmployeeNameBy("60"));
-
-            // DBにアクセスして、従業員番号70の人の名前を取得する。
-            Write(da.GetEmployeeNameBy("70"));
-
-            // DBにアクセスして、従業員番号80の人の名前を取得する。
-            Write(da.GetEmployeeNameBy("80"));
+            var idArray = new string[] { "60", "70", "80" };
+            foreach (var id in idArray)
+            {
+                Write(da.GetEmployeeNameBy(id));
+            }
         }
 
         public void Write(string name)
