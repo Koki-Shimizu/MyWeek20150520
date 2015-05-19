@@ -18,6 +18,9 @@ namespace MyWeek
 
             // DBにアクセスして、従業員番号70の人の名前を取得する。
             Console.WriteLine(da.GetEmployeeNameBy("70"));
+
+            // DBにアクセスして、従業員番号80の人の名前を取得する。
+            Console.WriteLine(da.GetEmployeeNameBy("80"));
         }
     }
 
